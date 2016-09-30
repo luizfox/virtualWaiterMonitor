@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<div ng-controller="MainCtrl as ctrl">
+	<h1>Orders</h1>
+	<table class="table table-striped table-bordered table-hover table-condensed">
+	  <thead>
+	    <tr>
+				<th>Quantity</th>
+				<th>Delivered</th>
+				<th>Table</th>
+				<th>Item</th>
+				<th>Action</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+		    <tr ng-repeat="order in orders">
+					<td>{{order.qty}}</td>
+					<td>{{order.delivered === true ? 'Yes' : 'No' }}</td>
+					<td>{{order.table}}</td>
+					<td>{{order.item.title}}</td>
+					<td><a href="JavaScript:void(0)" ng-click="markAsDelivered(order)">Mark as delivered</a></td>
+		    </tr>
+	  </tbody>
+	</table>
+
+	<h1 style="margin-top: 50px; ">Tables calling the waiter</h1>
+	<table class="table table-striped table-bordered table-hover table-condensed" style="width: 45%;">
+		<thead>
+			<tr>
+				<th>Table</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="call in calls">
+				<td>{{call.table}}</td>
+				<td><a href="JavaScript:void(0)" ng-click="markAsAnswered(call)">Mark as answered</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
